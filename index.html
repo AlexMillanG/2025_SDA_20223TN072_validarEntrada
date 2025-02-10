@@ -61,7 +61,7 @@
             </div>
             <br>
             <div class="col-12 text-end">
-                <button class="btn btn-primary" type="submit" >Enviar formulario</button>
+                <button class="btn btn-primary" type="submit" id="clk">Enviar formulario</button>
             </div>
         </form>
     </div>
@@ -72,6 +72,8 @@
     'use strict';
 
     window.addEventListener('load', function () {
+        document.getElementById("clk").disabled = true;
+        // var disabled = 
         var form = document.querySelector('.needs-validation');
         var submitBtn = document.getElementById('submitBtn');
 
@@ -129,6 +131,7 @@
 
         function verificarFormulario() {
             let todosValidos = Array.from(form.querySelectorAll('input')).every(input => input.classList.contains('is-valid'));
+            todosValidos ? document.getElementById("clk").disabled = false : document.getElementById("clk").disabled = true;
             submitBtn.disabled = !todosValidos;
         }
 
